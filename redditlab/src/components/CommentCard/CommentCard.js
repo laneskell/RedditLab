@@ -17,32 +17,33 @@ const CommentCard = (props) => {
     <CommentCardContainer>
       <CommentCardContent>
         <LeftContent>
-          <IconButton size="small" onClick={props.onClickUpvote}>
+          <IconButton size='small' onClick={props.onClickUpvote}>
             {props.userVoteDirection > 0 && (
-              <ArrowUpwardIcon fontSize="small" style={{ color: blue[500] }} />
+              <ArrowUpwardIcon fontSize='small' style={{ color: blue[500] }} />
             )}
             {props.userVoteDirection <= 0 && (
-              <ArrowUpwardIcon fontSize="small" />
+              <ArrowUpwardIcon fontSize='small' />
             )}
           </IconButton>
-          <Typography align="center" variant="h6">
+          <Typography align='center' variant='h6'>
             {props.votesCount}
           </Typography>
-          <IconButton size="small" onClick={props.onClickDownvote}>
+          <IconButton size='small' onClick={props.onClickDownvote}>
             {props.userVoteDirection >= 0 && (
-              <ArrowDownwardIcon fontSize="small" />
+              <ArrowDownwardIcon fontSize='small' />
             )}
             {props.userVoteDirection < 0 && (
-              <ArrowDownwardIcon fontSize="small" style={{ color: red[500] }} />
+              <ArrowDownwardIcon fontSize='small' style={{ color: red[500] }} />
             )}
           </IconButton>
         </LeftContent>
         <RightContent>
-          <Typography gutterBottom variant="h6">
+          <Typography gutterBottom variant='h6'>
             {props.text}
           </Typography>
-          <Typography variant="body2" color="textSecondary">
-            by {props.username} at {props.createdAt}
+          <Typography variant='body2' color='textSecondary'>
+            by {props.username} at{" "}
+            {`in ${props.createdAt} at ${props.createdAtTime}h`}
           </Typography>
         </RightContent>
       </CommentCardContent>

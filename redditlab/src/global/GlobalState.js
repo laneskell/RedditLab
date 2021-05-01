@@ -10,7 +10,8 @@ const GlobalState = (props) => {
   const [loading, setLoading] = useState("");
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(10);
+  const [postsPerPage, setPostsPerPage] = useState(5);
+
 
   return (
     <GlobalStateContext.Provider
@@ -32,6 +33,8 @@ const GlobalState = (props) => {
         setCurrentPage,
         postsPerPage,
         setPostsPerPage,
+  
+      
       }}
     >
       {props.children}

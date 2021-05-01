@@ -45,6 +45,7 @@ const SignUpForm = () => {
       .post(`${BASE_URL}/signup`, body)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("username", res.data.user.username);
         clear();
         setLoading(false);
         goToFeed(history);

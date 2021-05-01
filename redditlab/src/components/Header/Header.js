@@ -5,15 +5,20 @@ import Button from "@material-ui/core/Button";
 import { StyledToolbar } from "./styled";
 import { goToFeed, goToLogin } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
+import Switches from "../../pages/FeedPage/onNigth";
+import SwitchesSize from "../../pages/FeedPage/onNigth";
+import { Avatar } from "@material-ui/core";
 
-const Header = () => {
+const Header = (props) => {
   const history = useHistory();
   const { rightButtonText, setRightButtonText, token } = useContext(
     GlobalStateContext
   );
+ const  toggleChecked = props.toggleChecked
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("username");
   };
 
   const rightButtonAction = () => {
@@ -34,15 +39,21 @@ const Header = () => {
     }
   }, [token, setRightButtonText]);
 
+  const username = window.localStorage.getItem("username");
+
   return (
     <AppBar position="static">
       <StyledToolbar>
         <Button onClick={() => goToFeed(history)} color="inherit">
           LabEddit
         </Button>
+        <SwitchesSize toggleChecked={toggleChecked} />
+        <div>
+        <div><Avatar/> {username && <>  {username.toLocaleUpperCase()} </>}</div>
         <Button onClick={rightButtonAction} color="inherit">
           {rightButtonText}
         </Button>
+        </div>
       </StyledToolbar>
     </AppBar>
   );

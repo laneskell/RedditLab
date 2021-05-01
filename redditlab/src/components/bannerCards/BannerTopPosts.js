@@ -1,5 +1,4 @@
 import React from "react";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
@@ -11,10 +10,14 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import ShareIcon from "@material-ui/icons/Share";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AddCommentIcon from "@material-ui/icons/AddComment";
-import { CounterCommentsStyle, StyledCard, StyledCardActions, StyledViewMore } from "./styled";
-
+import {
+  CounterCommentsStyle,
+  StyledCard,
+  StyledCardActions,
+  StyledViewMore,
+  BannerCardContainer,
+} from "./styled";
 
 const useStyles = makeStyles((theme) => ({
   expand: {
@@ -28,81 +31,75 @@ const useStyles = makeStyles((theme) => ({
     transform: "rotate(180deg)",
   },
   avatar: {
-    backgroundColor: red[800],
+    backgroundColor: purple[600],
   },
 }));
 
-
 const BannerTopPosts = (props) => {
   const classes = useStyles();
-  const userName = props.username
+  const userName = props.username;
 
   const userFirstLetter = () => {
-      const firstLetter = userName && userName.substr(0, 1);
-       return userName && firstLetter.toUpperCase()
+    const firstLetter = userName && userName.substr(0, 1);
+    return userName && firstLetter.toUpperCase();
   };
 
   return (
-    
-    <StyledCard  onClick={props.onClickCard} className={classes.root}>
-    <CardHeader 
-      avatar={
-        <Avatar aria-label='recipe' className={classes.avatar}>
-          {userFirstLetter()}
-        </Avatar>
-      }
-      action={
-        <IconButton aria-label='settings'>
-          <MoreVertIcon />
-        </IconButton>
-      }
-      title={props.username}
-      subheader={`in ${props.createdAt} at ${props.createdAtTime}h`}
-    />
+    <BannerCardContainer>
+      <StyledCard onClick={props.onClickCard} className={classes.root}>
+        <CardHeader
+          avatar={
+            <Avatar aria-label='recipe' className={classes.avatar}>
+              {userFirstLetter()}
+            </Avatar>
+          }
+          action={
+            <div>
+              <IconButton size='small'>
+                {props.userVoteDirection >= 0 && <ArrowDownwardIcon />}
+                {props.userVoteDirection < 0 && (
+                  <ArrowDownwardIcon style={{ color: red[500] }} />
+                )}
+              </IconButton>
 
-    <CardContent  >
-      <Typography variant='body1' color='textPrimary' component='p'>
-        {props.title}
-      </Typography>
-     
-    </CardContent> 
-    <StyledViewMore>Ler post completo ...</StyledViewMore>
-    <StyledCardActions disableSpacing>
-      <div>
+              {props.votesCount}
 
-         <IconButton size="small" >
-            {props.userVoteDirection >= 0 && <ArrowDownwardIcon />}
-            {props.userVoteDirection < 0 && (
-              <ArrowDownwardIcon style={{ color: red[500] }} />
-            )}
+              <IconButton size='small'>
+                {props.userVoteDirection > 0 && (
+                  <ArrowUpwardIcon style={{ color: blue[500] }} />
+                )}
+                {props.userVoteDirection <= 0 && <ArrowUpwardIcon />}
+              </IconButton>
+            </div>
+          }
+          title={props.username}
+          subheader={`in ${props.createdAt} at ${props.createdAtTime}h`}
+        />
+
+        <CardContent>
+          <Typography variant='body1' color='textPrimary' component='p'>
+            {props.title}
+          </Typography>
+          <IconButton aria-label='show more'>
+            <AddCommentIcon />
+
+            <CounterCommentsStyle>
+              {props.commentsCount} comments
+            </CounterCommentsStyle>
           </IconButton>
+          <StyledViewMore>veja mais ...</StyledViewMore>
+        </CardContent>
 
-          {props.votesCount}
-
-           <IconButton size="small" >
-            {props.userVoteDirection > 0 && (
-              <ArrowUpwardIcon style={{ color: blue[500] }} />
-            )}
-            {props.userVoteDirection <= 0 && <ArrowUpwardIcon />}
-          </IconButton>
-      </div>
-    
-      <div>
-        <IconButton aria-label='share'>
-          <ShareIcon />
-        </IconButton>
-        <IconButton  aria-label='show more' >
-          <AddCommentIcon />
-          
-       
-        <CounterCommentsStyle  >{props.commentsCount} comments</CounterCommentsStyle>
-         </IconButton>
-      </div>
-    </StyledCardActions>
-  </StyledCard>
-    
-      
+        <StyledCardActions disableSpacing>
+          <div>
+            <IconButton aria-label='share'>
+              <ShareIcon />
+            </IconButton>
+          </div>
+        </StyledCardActions>
+      </StyledCard>
+    </BannerCardContainer>
   );
 };
 
-export default  BannerTopPosts ;
+export default BannerTopPosts;

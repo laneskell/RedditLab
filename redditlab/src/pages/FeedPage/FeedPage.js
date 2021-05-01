@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import {
   ScreenContainer,
   PostsContainer,
@@ -6,6 +6,7 @@ import {
   InputDiv,
   TopContainerPosts,
   ContainerFeed,
+  ContainerSeach,
 } from "./styled";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import PostCard from "../../components/PostCard/PostCard";
@@ -16,11 +17,14 @@ import Loader from "../../components/Loader";
 import Pagination from "../../components/Pagination";
 import { goToCreatePostPage, goToPostPage } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
-import { Add } from "@material-ui/icons";
+import { Add, BusinessTwoTone } from "@material-ui/icons";
 import AlertModified from "../../components/Alert";
 import useInput from "../../hooks/useInput";
 import TextField from "@material-ui/core/TextField";
 import TopPosts from "./mostCommentedPosts";
+import TopComments from "./topcomments";
+import { Button, ButtonBase } from "@material-ui/core";
+import { blue, green, red, yellow } from "@material-ui/core/colors";
 
 const FeedPage = () => {
   useProtectedPage();
@@ -39,6 +43,7 @@ const FeedPage = () => {
   const history = useHistory();
 
   const [search, setSearch] = useInput("");
+  const [containerSearch, setContainerSearch] = useState(true);
 
   const onClickCard = (id) => {
     goToPostPage(history, id);
@@ -159,13 +164,20 @@ const FeedPage = () => {
     }
   });
 
+
+  var corlorRandom = () => {
+    return '#'+Math.floor(Math.random()*16777215).toString(16);
+  } 
+
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const postsCards = currentPosts.map((post) => {
     var date = new Date(post.createdAt);
+    
     return (
       <PostCard
         key={post.id}
+        color={corlorRandom()}
         title={post.title}
         votesCount={post.votesCount}
         username={post.username}
@@ -181,22 +193,32 @@ const FeedPage = () => {
     );
   });
 
+  const toggleStateContainerSearch = () => {
+    containerSearch ? setContainerSearch(false) : setContainerSearch(true);
+  };
+
   return (
     <ContainerFeed>
-      <div>
-        <InputDiv>
-          <TextField
-            name={"search"}
-            value={search}
-            onChange={setSearch}
-            variant={"outlined"}
-            label={"Search by title, text or username"}
-            fullWidth
-            autoFocus
-            margin={"normal"}
-          />
-        </InputDiv>
-      </div>
+     <div>
+        
+        {!containerSearch ? (
+           <button onClick={toggleStateContainerSearch}> BUSCAR</button>
+        ) : ( <ContainerSeach>
+          <button onClick={toggleStateContainerSearch}> X</button>
+          <InputDiv>
+            <TextField
+              name={"search"}
+              value={search}
+              onChange={setSearch}
+              variant={"outlined"}
+              label={"Search by title, text or username"}
+              fullWidth
+              autoFocus
+              margin={"normal"}
+            />
+          </InputDiv>
+         </ContainerSeach> )}
+    </div>
       <ScreenContainer>
         <>
           {loading ? <Loader /> : <PostsContainer>{postsCards}</PostsContainer>}
@@ -214,6 +236,7 @@ const FeedPage = () => {
 
       <TopContainerPosts>
         <TopPosts />
+        <TopComments />
       </TopContainerPosts>
     </ContainerFeed>
   );

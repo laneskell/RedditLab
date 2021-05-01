@@ -3,7 +3,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Avatar, CardActions } from "@material-ui/core";
 
-
 export const PostCardContainer = styled(Card)`
   width: 20vw;
   margin: 5%;
@@ -28,13 +27,16 @@ export const LeftContent = styled.div`
   margin-right: 5%;
   margin-top: 4px;
 `;
-export const RightContent = styled.div``;
 
+export const BannerCardContainer = styled(Card)`
+  display: flex;
+  justify-content: center;
+`;
 
 export const StyledCard = styled(Card)`
   margin: 1vh;
-  width: clamp(350px, 22vw, 500px);
-  height:26vh;
+  width: clamp(350px, 34vw, 600px);
+  height: 26vh;
 `;
 export const StyledCardActions = styled(CardActions)`
   display: flex;
@@ -53,21 +55,19 @@ export const TextCardComments = styled.div`
 `;
 
 export const CounterCommentsStyle = styled.p`
-  font-size:12px;
-  display:inline;
-  width:80%;
-  height:50%;
+  font-size: 12px;
+  display: inline;
+  width: 80%;
+  height: 50%;
 `;
 export const IconVotesCounter = styled.div`
-  display:flex;
-  flex-direction:column;
-  text-align:center;
-  height:8vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 8vh;
 `;
 
 export const StyledViewMore = styled.p`
-  display:flex;
-  justify-content:flex-end;
-  
-  
+  display: flex;
+  justify-content: flex-end;
 `;

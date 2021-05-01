@@ -33,7 +33,7 @@ export const RightContent = styled.div``;
 
 export const StyledCard = styled(Card)`
   margin: 1vh;
-  width: clamp(350px, 40vw, 800px);
+  width: clamp(300px, 42vw, 1100px);
 `;
 export const StyledCardActions = styled(CardActions)`
   display: flex;

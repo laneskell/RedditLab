@@ -255,10 +255,11 @@ const PostPage = () => {
     return (
       <CommentCard
         key={comment.id}
-        text={comment.text}
+        text={comment.text.toString() }
         votesCount={comment.votesCount}
         username={comment.username}
         createdAt={date.toLocaleDateString()}
+        createdAtTime={date.toLocaleTimeString()}
         userVoteDirection={comment.userVoteDirection}
         onClickUpvote={() => upvoteComment(comment)}
         onClickDownvote={() => downvoteComment(comment)}
@@ -281,6 +282,7 @@ const PostPage = () => {
             votesCount={postDetails.votesCount}
             username={postDetails.username}
             createdAt={date.toLocaleDateString()}
+            createdAtTime={date.toLocaleTimeString()}
             commentsCount={postDetails.commentsCount}
             userVoteDirection={postDetails.userVoteDirection}
             onClickUpvote={() => upvotePost(postDetails)}

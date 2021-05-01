@@ -43,6 +43,7 @@ const LoginForm = () => {
       .post(`${BASE_URL}/login`, body)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("username", res.data.user.username);
         setLoading(false);
         clear();
         goToFeed(history);

@@ -8,6 +8,7 @@ export const ScreenContainer = styled.div`
   align-items: center;
   width: 100vw;
   margin-top: 5vh;
+  
 `;
 export const PostCardContainer = styled(Card)`
   width: 65vw;
