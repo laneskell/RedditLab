@@ -13,7 +13,26 @@ const GlobalState = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
   const [search, setSearch] = useInput("");
-  const [containerSearch, setContainerSearch] = React.useState(false);
+  const [containerSearch, setContainerSearch] = React.useState(true);
+
+  React.useEffect(() => {
+  
+    if (window.matchMedia("(min-width:800px)").matches) {
+      setContainerSearch(true)
+      setPostsPerPage(5)
+     
+     
+    } else {
+      setContainerSearch(false)
+      setPostsPerPage(2)
+    }
+
+  
+  
+}, []);
+
+
+
 
   return (
     <GlobalStateContext.Provider

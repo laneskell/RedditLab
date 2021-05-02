@@ -75,7 +75,7 @@ export const ContainerSeach = styled.div`
 display:flex;
 flex-direction:row;
 height:100%;
-width:clamp(240px, 14vw, 320px);
+width:clamp(270px, 14vw, 320px);
 margin-left:-24px;
 animation: mymove 1.5s;
 ::after{
