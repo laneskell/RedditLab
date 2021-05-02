@@ -29,6 +29,7 @@ export default function VerticalTabs() {
     containerSearch,
     setContainerSearch,
   } = React.useContext(GlobalStateContext);
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
