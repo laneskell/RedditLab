@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import CreatePostPage from "../pages/CreatePostPage/CreatePostPage";
 import FeedPage from "../pages/FeedPage/FeedPage";
@@ -11,9 +11,16 @@ import GlobalStateContext from "../global/GlobalStateContext";
 
 const Router = (props) => {
   const toggleChecked = props.toggleChecked
+  const toggleCheckedLigth = props.toggleCheckedLigth
+  const checked = props.checked 
+
+  useEffect(() => {
+   
+  }, [checked]);
+
   return (
     <BrowserRouter>
-      <Header toggleChecked={toggleChecked} />
+      <Header  checked={checked}  toggleChecked={toggleChecked} toggleCheckedLigth={toggleCheckedLigth} />
       <Switch>
         <Route exact path="/login">
           <LoginPage />

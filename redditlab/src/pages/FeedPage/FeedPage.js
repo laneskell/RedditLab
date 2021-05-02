@@ -23,8 +23,9 @@ import useInput from "../../hooks/useInput";
 import TextField from "@material-ui/core/TextField";
 import TopPosts from "./mostCommentedPosts";
 import TopComments from "./topcomments";
-import { Button, ButtonBase } from "@material-ui/core";
+import { Button, ButtonBase, Container, CssBaseline } from "@material-ui/core";
 import { blue, green, red, yellow } from "@material-ui/core/colors";
+import VerticalTabs from "./verticalTabs";
 
 const FeedPage = () => {
   useProtectedPage();
@@ -43,7 +44,7 @@ const FeedPage = () => {
   const history = useHistory();
 
   const [search, setSearch] = useInput("");
-  const [containerSearch, setContainerSearch] = useState(true);
+  
 
   const onClickCard = (id) => {
     goToPostPage(history, id);
@@ -164,16 +165,15 @@ const FeedPage = () => {
     }
   });
 
-
   var corlorRandom = () => {
-    return '#'+Math.floor(Math.random()*16777215).toString(16);
-  } 
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  };
 
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const postsCards = currentPosts.map((post) => {
     var date = new Date(post.createdAt);
-    
+
     return (
       <PostCard
         key={post.id}
@@ -193,52 +193,38 @@ const FeedPage = () => {
     );
   });
 
-  const toggleStateContainerSearch = () => {
-    containerSearch ? setContainerSearch(false) : setContainerSearch(true);
-  };
-
   return (
-    <ContainerFeed>
-     <div>
-        
-        {!containerSearch ? (
-           <button onClick={toggleStateContainerSearch}> BUSCAR</button>
-        ) : ( <ContainerSeach>
-          <button onClick={toggleStateContainerSearch}> X</button>
-          <InputDiv>
-            <TextField
-              name={"search"}
-              value={search}
-              onChange={setSearch}
-              variant={"outlined"}
-              label={"Search by title, text or username"}
-              fullWidth
-              autoFocus
-              margin={"normal"}
-            />
-          </InputDiv>
-         </ContainerSeach> )}
-    </div>
-      <ScreenContainer>
-        <>
-          {loading ? <Loader /> : <PostsContainer>{postsCards}</PostsContainer>}
+    <Container maxWidth='gl'>
+      <CssBaseline />
+      <ContainerFeed>
+        <div>
+          <VerticalTabs />
+        </div>
+        <ScreenContainer>
+          <>
+            {loading ? (
+              <Loader />
+            ) : (
+              <PostsContainer>{postsCards}</PostsContainer>
+            )}
 
-          <Pagination totalPosts={filteredPosts.length} />
-          <AlertModified />
-          <AddPostButton
-            color={"primary"}
-            onClick={() => goToCreatePostPage(history)}
-          >
-            <Add />
-          </AddPostButton>
-        </>
-      </ScreenContainer>
+            <Pagination totalPosts={filteredPosts.length} />
+            <AlertModified />
+            <AddPostButton
+              color={"primary"}
+              onClick={() => goToCreatePostPage(history)}
+            >
+              <Add />
+            </AddPostButton>
+          </>
+        </ScreenContainer>
 
-      <TopContainerPosts>
-        <TopPosts />
-        <TopComments />
-      </TopContainerPosts>
-    </ContainerFeed>
+        <TopContainerPosts>
+          <TopPosts />
+          <TopComments />
+        </TopContainerPosts>
+      </ContainerFeed>
+    </Container>
   );
 };
 

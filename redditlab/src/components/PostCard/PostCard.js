@@ -22,6 +22,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ShareIcon from "@material-ui/icons/Share";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AddCommentIcon from "@material-ui/icons/AddComment";
+import { Badge } from "@material-ui/core";
 
 const useStyles = makeStyles((theme, props) => ({
   expand: {
@@ -34,14 +35,18 @@ const useStyles = makeStyles((theme, props) => ({
   expandOpen: {
     transform: "rotate(180deg)",
   },
-  avatar: {
-    backgroundColor: [500],
-  },
+
 }));
 
 const PostCard = (props) => {
   const classes = useStyles();
   const userName = props.username;
+  const countComment = props.commentsCount
+
+  const count = () => {
+    const countBallon = countComment && countComment
+    return countComment ? countBallon.toString() : "0";
+  }
 
   const userFirstLetter = () => {
     const firstLetter = userName && userName.substr(0, 1);
@@ -57,11 +62,7 @@ const PostCard = (props) => {
             {userFirstLetter()}
           </Avatar>
         }
-        action={
-          <IconButton aria-label='settings'>
-            <MoreVertIcon />
-          </IconButton>
-        }
+   
         title={props.username}
         subheader={`in ${props.createdAt} at ${props.createdAtTime}h`}
       />
@@ -94,15 +95,14 @@ const PostCard = (props) => {
         </div>
 
         <div>
-          <IconButton aria-label='share'>
+          <IconButton  aria-label='share'>
             <ShareIcon />
           </IconButton>
-          <IconButton onClick={props.onClickCard} aria-label='show more'>
+          <IconButton  onClick={props.onClickCard} aria-label='show more'>
+            <Badge color="secondary" badgeContent = {count()}>
             <AddCommentIcon />
-
-            <CounterCommentsStyle>
-              {props.commentsCount} comments
-            </CounterCommentsStyle>
+        </Badge>
+           
           </IconButton>
         </div>
       </StyledCardActions>

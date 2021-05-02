@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Fab from "@material-ui/core/Fab";
 import { primaryColorNigth } from "../../constants/colors";
+import { FormGroup } from "@material-ui/core";
 
 
 
@@ -71,20 +72,37 @@ export const ContainerChangeTheme = styled.div`
 
 `;
 export const ContainerSeach = styled.div`
-background-color:${primaryColorNigth};
-width:100%;
+display:flex;
+flex-direction:row;
 height:100%;
+margin-left:-24px;
 animation: mymove 1.5s;
 ::after{
   @keyframes mymove {
   100%{
       transform: translateX();
-      opacity: 1;
+      opacity: 0.8;
     }
   0%{
-      transform: translateX(-600px)  translateY(0);
-      opacity: 0.4;
+      transform: translateX(-300px)  translateY(0);
+      opacity: 0.2;
   }
 }}
+
+`;
+
+export const StyledButtonTheme = styled.div`
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+
+
+`;
+export const StyledFormGroup = styled(FormGroup)`
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
 
 `;

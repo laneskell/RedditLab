@@ -1,20 +1,32 @@
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
-import { primaryColor, neutralColor } from "./colors";
+import {
+  secundaryColorText,
+  primaryColor,
+  neutralColor,
+  backgroundColor,
+  backgroundColorCard,
+  contrastColorText,
+} from "./colors";
 
 const theme2 = createMuiTheme({
   palette: {
     primary: {
       main: primaryColor,
-      contrastText: "white",
+      contrastText: contrastColorText,
     },
     background: {
-      default: "#fafafa",
-      paper: "#fff",
+      default: backgroundColor,
+      paper: backgroundColorCard,
     },
     text: {
       primary: neutralColor,
+      secondary: secundaryColorText,
+      disabled: "white",
     },
-    
+    action: {
+      disabled: "white",
+      active: "rgba(0, 0, 0, 0.54)",
+    },
   },
 });
 

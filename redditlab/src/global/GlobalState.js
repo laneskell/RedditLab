@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useInput from "../hooks/useInput";
 import GlobalStateContext from "./GlobalStateContext";
 
 const GlobalState = (props) => {
@@ -11,7 +12,8 @@ const GlobalState = (props) => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
-
+  const [search, setSearch] = useInput("");
+  const [containerSearch, setContainerSearch] = React.useState(false);
 
   return (
     <GlobalStateContext.Provider
@@ -33,8 +35,10 @@ const GlobalState = (props) => {
         setCurrentPage,
         postsPerPage,
         setPostsPerPage,
-  
-      
+        search,
+        setSearch,
+        containerSearch,
+        setContainerSearch,
       }}
     >
       {props.children}

@@ -12,7 +12,7 @@ export const CommentCardContainer = styled(Card)`
     width: 85vw;
   }
   margin: 10px;
-  background-color: #fcfcfc;
+  
 `;
 
 export const CommentCardContent = styled(CardContent)`

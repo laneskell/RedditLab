@@ -38,7 +38,7 @@ const CommentCard = (props) => {
           </IconButton>
         </LeftContent>
         <RightContent>
-          <Typography gutterBottom variant='h6'>
+          <Typography variant='h6'>
             {props.text}
           </Typography>
           <Typography variant='body2' color='textSecondary'>

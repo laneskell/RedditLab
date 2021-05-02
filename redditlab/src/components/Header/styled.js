@@ -5,3 +5,6 @@ export const StyledToolbar = styled(Toolbar)`
   display: flex;
   justify-content: space-between;
 `;
+export const ContainerLogout = styled.div`
+
+`;

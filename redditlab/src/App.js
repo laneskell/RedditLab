@@ -1,27 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Router from "./routes/Router";
 import { ThemeProvider } from "@material-ui/core/styles";
 import light from "./constants/light";
+import nigth from "./constants/Nigth";
 import theme from "./constants/theme";
 import GlobalState from "./global/GlobalState";
 import GlobalStyle from './global/global'
 import { blue } from "@material-ui/core/colors";
 
 const App = () => {
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState();
 
-  console.log(checked, "chega?")
+  useEffect(() => {
+   
+  }, [checked]);
+
+ 
 
   const toggleChecked = () => {
-    !checked && setChecked(true) 
+    !checked ? setChecked(true) : setChecked(false)
   return 
   };
-  const isTheme = !checked ? theme : light
+  console.log(theme)
+
   console.log(checked, "trocou")
-  console.log(isTheme, "tema")
+  
   return (
     
-    <ThemeProvider theme={ isTheme }>
+    <ThemeProvider theme={ !checked ? theme : nigth }>
       <GlobalStyle/>
       <GlobalState >
         
