@@ -12,22 +12,21 @@ import { StyledButtonTheme, StyledFormGroup } from "./styled";
 export default function SwitchesSize(props) {
   const refreshPage = () => {
     props.toggleChecked()
-    window.location.reload();
-  };
+    };
 
   return (
     <StyledButtonTheme>
 
-      <IconButton onClick={refreshPage} >
-        <WbSunnyRoundedIcon color="disabled"/>
-      </IconButton>
- <StyledFormGroup>
+     
+ <StyledFormGroup onClick={refreshPage} >
+  
      
         <FormControlLabel
-          checked={props.checked === true}
+        
+          // checked={props.checked === true}
           control={<Switch />}
         />
-        <NightsStay color="disabled" onClick={props.toggleChecked} />
+        {!props.checkd ? <NightsStay color="disabled" /> :   <WbSunnyRoundedIcon color="disabled"/>}
       </StyledFormGroup>
     </StyledButtonTheme>
   );
