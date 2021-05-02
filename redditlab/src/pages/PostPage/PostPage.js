@@ -269,6 +269,11 @@ const PostPage = () => {
 
   var date = new Date(postDetails.createdAt);
 
+  var corlorRandom = () => {
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  };
+ 
+
   return (
     <ScreenContainer>
       {loading ? (
@@ -277,6 +282,7 @@ const PostPage = () => {
         <PostCardContainer>
           <PostCard
             key={postDetails.id}
+            color={corlorRandom()}
             title={postDetails.title}
             text={postDetails.text}
             votesCount={postDetails.votesCount}

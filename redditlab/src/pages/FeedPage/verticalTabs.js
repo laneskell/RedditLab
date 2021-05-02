@@ -50,9 +50,11 @@ export default function VerticalTabs() {
             textColor='secondary'
           >
             {" "}
-            <IconButton color='secondary' onClick={toggleStateContainerSearch}>
+ 
+            <IconButton  color='secondary' onClick={toggleStateContainerSearch}>
               <CloseIcon />
             </IconButton>
+
             <TextField
               name={"search"}
               value={search}
