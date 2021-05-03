@@ -26,7 +26,7 @@ const LoginForm = () => {
     loading,
     setLoading,
   } = useContext(GlobalStateContext);
-
+  setLoading(false)
   const onSubmitForm = (event) => {
     event.preventDefault();
     getLogin(form, clear, history);

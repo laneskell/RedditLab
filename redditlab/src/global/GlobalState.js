@@ -8,7 +8,7 @@ const GlobalState = (props) => {
   const [alertSeverity, setAlertSeverity] = useState("");
   const token = localStorage.getItem("token");
   const [rightButtonText, setRightButtonText] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState();
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);

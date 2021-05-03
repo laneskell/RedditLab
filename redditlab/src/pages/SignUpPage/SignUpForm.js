@@ -33,7 +33,7 @@ const SignUpForm = () => {
     getSignUp(form, clear, history);
     setLoading(true);
   };
-
+  setLoading(false)
   const showPassWordInput = () => {
     showPassWord === "password" ? setPassWord("text") : setPassWord("password");
   };
