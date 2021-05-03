@@ -56,7 +56,7 @@ const PostPage = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err.message);
+        alert(err.message);
         alert("Error getting post details!");
       });
   };
@@ -70,7 +70,7 @@ const PostPage = () => {
       })
       .then((res) => {
         clear();
-        console.log(res);
+        alert(res);
         getPostDetails();
       })
       .catch((err) => {
@@ -110,7 +110,7 @@ const PostPage = () => {
           getPostDetails();
         })
         .catch((err) => {
-          console.log(err.message);
+          alert(err.message);
         });
     }
   };
@@ -139,7 +139,7 @@ const PostPage = () => {
           getPostDetails();
         })
         .catch((err) => {
-          console.log(err.message);
+          alert(err.message);
         });
     }
   };
@@ -161,7 +161,7 @@ const PostPage = () => {
         getPostDetails();
       })
       .catch((err) => {
-        console.log(err.message);
+        alert(err.message);
       });
   };
 
@@ -185,7 +185,7 @@ const PostPage = () => {
           getPostDetails();
         })
         .catch((err) => {
-          console.log(err.message);
+          alert(err.message);
         });
     }
   };
@@ -210,7 +210,7 @@ const PostPage = () => {
           getPostDetails();
         })
         .catch((err) => {
-          console.log(err.message);
+          alert(err.message);
         });
     }
   };
@@ -232,7 +232,7 @@ const PostPage = () => {
         getPostDetails();
       })
       .catch((err) => {
-        console.log(err.message);
+        alert(err.message);
       });
   };
 

@@ -67,7 +67,7 @@ const TopComments = () => {
         />
       );
     });
-  console.log(postsTopBanner);
+
 
   return (
     <StyledCarousel>

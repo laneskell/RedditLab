@@ -37,7 +37,6 @@ const AddRecipeForm = () => {
       })
       .then((res) => {
         clear();
-        console.log(res);
         setLoading(false);
         setAlertMsg("Post created successfully");
         setAlertSeverity("success");

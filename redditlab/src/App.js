@@ -1,40 +1,28 @@
 import React, { useEffect } from "react";
 import Router from "./routes/Router";
 import { ThemeProvider } from "@material-ui/core/styles";
-import light from "./constants/light";
 import nigth from "./constants/Nigth";
 import theme from "./constants/theme";
 import GlobalState from "./global/GlobalState";
-import GlobalStyle from './global/global'
-import { blue } from "@material-ui/core/colors";
+import GlobalStyle from "./global/global";
 
 const App = () => {
   const [checked, setChecked] = React.useState();
 
-  useEffect(() => {
-   
-  }, [checked]);
-
- 
+  useEffect(() => {}, [checked]);
 
   const toggleChecked = () => {
-    !checked ? setChecked(true) : setChecked(false)
-  return 
+    !checked ? setChecked(true) : setChecked(false);
+    return;
   };
-  console.log(theme)
 
-  console.log(checked, "trocou")
-  
   return (
-    
-    <ThemeProvider theme={ !checked ? theme : nigth }>
-      <GlobalStyle/>
-      <GlobalState >
-        
-        <Router checked={checked} toggleChecked={toggleChecked}/>
+    <ThemeProvider theme={!checked ? theme : nigth}>
+      <GlobalStyle />
+      <GlobalState>
+        <Router checked={checked} toggleChecked={toggleChecked} />
       </GlobalState>
     </ThemeProvider>
-    
   );
 };
 

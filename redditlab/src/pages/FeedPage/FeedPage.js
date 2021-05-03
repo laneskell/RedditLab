@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext} from "react";
 import {
   ScreenContainer,
   PostsContainer,
@@ -18,7 +18,6 @@ import { useHistory } from "react-router-dom";
 import { Add,} from "@material-ui/icons";
 import AlertModified from "../../components/Alert";
 import useInput from "../../hooks/useInput";
-import TextField from "@material-ui/core/TextField";
 import TopPosts from "./mostCommentedPosts";
 import TopComments from "./topcomments";
 import {Container, CssBaseline } from "@material-ui/core";
@@ -58,7 +57,7 @@ const FeedPage = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err.message);
+        alert(err.message);
       });
   };
 
@@ -82,7 +81,7 @@ const FeedPage = () => {
           getPosts();
         })
         .catch((err) => {
-          console.log(err.message);
+          alert(err.message);
         });
     }
   };
@@ -107,7 +106,7 @@ const FeedPage = () => {
           getPosts();
         })
         .catch((err) => {
-          console.log(err.message);
+          alert(err.message);
         });
     }
   };
@@ -129,7 +128,7 @@ const FeedPage = () => {
         getPosts();
       })
       .catch((err) => {
-        console.log(err.message);
+        alert(err.message);
       });
   };
 
@@ -145,7 +144,7 @@ const FeedPage = () => {
   const sortPosts = posts.sort((a, b) => {
     return b.createdAt - a.createdAt;
   });
-  console.log("chega o search", search);
+
   const filteredPosts = sortPosts.filter((post) => {
     const titlePost = post.title.toLowerCase();
     const textPost = post.text.toLowerCase();

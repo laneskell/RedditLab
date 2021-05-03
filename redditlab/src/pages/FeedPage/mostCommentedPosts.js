@@ -13,16 +13,9 @@ import { StyledCarousel } from "./styled";
 const TopPosts = () => {
   useProtectedPage();
   const {
-    loading,
-    setLoading,
     posts,
-    setPosts,
     currentPage,
-    setCurrentPage,
     postsPerPage,
-    setAlertMsg,
-    setAlertSeverity,
-    setOpenAlert,
   } = useContext(GlobalStateContext);
   const history = useHistory();
 
@@ -78,7 +71,7 @@ const TopPosts = () => {
         />
       );
     });
-  console.log(postsTopBanner);
+  
 
   return (
     <StyledCarousel>
