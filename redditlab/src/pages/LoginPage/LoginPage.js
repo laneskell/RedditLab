@@ -11,6 +11,7 @@ import AlertModified from "../../components/Alert";
 const LoginPage = () => {
   useUnprotectedPage();
   const history = useHistory();
+
   return (
     <ScreenContainer>
       <LogoImage src={logo} />
@@ -23,7 +24,7 @@ const LoginPage = () => {
           color={"primary"}
           onClick={() => goToSignUp(history)}
         >
-          Sign Up
+          INSCREVA-SE
         </Button>
       </SignUpButtonContainer>
       <AlertModified />

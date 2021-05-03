@@ -1,14 +1,12 @@
 import styled from "styled-components";
 import Card from "@material-ui/core/Card";
 
-
 export const ScreenContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
   margin-top: 5vh;
-  
 `;
 export const PostCardContainer = styled(Card)`
   width: 65vw;

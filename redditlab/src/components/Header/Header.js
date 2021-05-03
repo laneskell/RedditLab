@@ -2,13 +2,13 @@ import React, { useEffect, useContext } from "react";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
-import { ContainerLogout, StyledToolbar } from "./styled";
+import { ContainerLogout, PopperStyled, StyledToolbar } from "./styled";
 import { goToFeed, goToLogin } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
-import Switches from "../../pages/FeedPage/onNigth";
 import SwitchesSize from "../../pages/FeedPage/onNigth";
-import { Avatar, IconButton } from "@material-ui/core";
-import MenuIcon from '@material-ui/icons/Menu';
+import { Avatar, IconButton, Popper } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const Header = (props) => {
   const history = useHistory();
@@ -16,8 +16,6 @@ const Header = (props) => {
     rightButtonText,
     setRightButtonText,
     token,
-    search,
-    setSearch,
     containerSearch,
     setContainerSearch,
   } = useContext(GlobalStateContext);
@@ -29,6 +27,13 @@ const Header = (props) => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
   };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popper" : undefined;
 
   const rightButtonAction = () => {
     if (token) {
@@ -62,7 +67,7 @@ const Header = (props) => {
           </Button>
           {!containerSearch && (
             <IconButton color='inherit' onClick={toggleStateContainerSearch}>
-              <MenuIcon  />
+              <MenuIcon />
             </IconButton>
           )}
         </div>
@@ -72,12 +77,20 @@ const Header = (props) => {
           toggleCheckedLigth={toggleCheckedLigth}
         />
         <div>
-          <ContainerLogout>
-            <Avatar /> {username && <> {username.toLocaleUpperCase()} </>}
-            <Button onClick={rightButtonAction} color='inherit'>
-              {rightButtonText}{" "}
-            </Button>
+          <ContainerLogout onClick={handleClick}>
+            <Avatar />{" "}
+            {username && (
+              <>
+                {" "}
+                {username.toLocaleUpperCase()} <ExpandMoreIcon />{" "}
+              </>
+            )}
           </ContainerLogout>
+          <Popper id={id} open={open} anchorEl={anchorEl}>
+            <PopperStyled onClick={rightButtonAction} color='secundary'>
+              {rightButtonText}{" "}
+            </PopperStyled>
+          </Popper>
         </div>
       </StyledToolbar>
     </AppBar>

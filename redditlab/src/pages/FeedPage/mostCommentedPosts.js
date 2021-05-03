@@ -1,7 +1,7 @@
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import GlobalStateContext from "../../global/GlobalStateContext";
-import {goToPostPage } from "../../routes/coordinator";
+import { goToPostPage } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import BannerTopPosts from "../../components/bannerCards/BannerTopPosts";
@@ -9,8 +9,6 @@ import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import { blue } from "@material-ui/core/colors";
 import Carousel from "react-elastic-carousel";
 import { StyledCarousel } from "./styled";
-
-
 
 const TopPosts = () => {
   useProtectedPage();
@@ -86,18 +84,13 @@ const TopPosts = () => {
     <StyledCarousel>
       <h3>
         {" "}
-        <ArrowUpwardIcon style={{ color: blue[500] }} /> TOP 5 - OS MAIS CURTIDOS
+        <ArrowUpwardIcon style={{ color: blue[500] }} /> TOP 5 - OS MAIS
+        CURTIDOS
       </h3>
-      
-      
-      <Carousel>
-      {postsTopBanner}
-          </Carousel>
 
-    
+      <Carousel>{postsTopBanner}</Carousel>
     </StyledCarousel>
-  )
-}
+  );
+};
 
 export default TopPosts;
-

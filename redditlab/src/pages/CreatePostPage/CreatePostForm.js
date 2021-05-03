@@ -87,7 +87,7 @@ const AddRecipeForm = () => {
               type={"submit"}
               fullWidth
             >
-             <>Add Post</>
+              <>Add Post</>
             </Button>
           </AddPostFormContainer>
         </form>

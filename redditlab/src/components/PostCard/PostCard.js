@@ -1,18 +1,9 @@
 import React from "react";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
-import {
-  PostCardContainer,
-  PostCardContent,
-  LeftContent,
-  RightContent,
-  StyledCard,
-  StyledCardActions,
-  CounterCommentsStyle,
-} from "./styled";
+import { StyledCard, StyledCardActions } from "./styled";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
-import { blue, green } from "@material-ui/core/colors";
+import { blue } from "@material-ui/core/colors";
 import { red } from "@material-ui/core/colors";
 import IconButton from "@material-ui/core/IconButton";
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,7 +11,6 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import ShareIcon from "@material-ui/icons/Share";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AddCommentIcon from "@material-ui/icons/AddComment";
 import { Badge } from "@material-ui/core";
 
@@ -35,18 +25,17 @@ const useStyles = makeStyles((theme, props) => ({
   expandOpen: {
     transform: "rotate(180deg)",
   },
-
 }));
 
 const PostCard = (props) => {
   const classes = useStyles();
   const userName = props.username;
-  const countComment = props.commentsCount
+  const countComment = props.commentsCount;
 
   const count = () => {
-    const countBallon = countComment && countComment
+    const countBallon = countComment && countComment;
     return countComment ? countBallon.toString() : "0";
-  }
+  };
 
   const userFirstLetter = () => {
     const firstLetter = userName && userName.substr(0, 1);
@@ -58,11 +47,13 @@ const PostCard = (props) => {
       <CardHeader
         onClick={props.onClickCard}
         avatar={
-          <Avatar style={{ backgroundColor: props.color }} className={classes.avatar}>
+          <Avatar
+            style={{ backgroundColor: props.color }}
+            className={classes.avatar}
+          >
             {userFirstLetter()}
           </Avatar>
         }
-   
         title={props.username}
         subheader={`in ${props.createdAt} at ${props.createdAtTime}h`}
       />
@@ -95,14 +86,13 @@ const PostCard = (props) => {
         </div>
 
         <div>
-          <IconButton  aria-label='share'>
+          <IconButton aria-label='share'>
             <ShareIcon />
           </IconButton>
-          <IconButton  onClick={props.onClickCard} aria-label='show more'>
-            <Badge color="secondary" badgeContent = {count()}>
-            <AddCommentIcon />
-        </Badge>
-           
+          <IconButton onClick={props.onClickCard} aria-label='show more'>
+            <Badge color='secondary' badgeContent={count()}>
+              <AddCommentIcon />
+            </Badge>
           </IconButton>
         </div>
       </StyledCardActions>

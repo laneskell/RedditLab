@@ -13,7 +13,7 @@ import { StyledButtonBase } from "../LoginPage/styled";
 
 const SignUpForm = () => {
   const history = useHistory();
-  const [showPassWord, setPassWord] = useState("password")
+  const [showPassWord, setPassWord] = useState("password");
   const [form, onChange, clear] = useForm({
     username: "",
     email: "",
@@ -30,16 +30,15 @@ const SignUpForm = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    signUp(form, clear, history);
+    getSignUp(form, clear, history);
     setLoading(true);
   };
 
   const showPassWordInput = () => {
-    showPassWord === "password" ? setPassWord ("text") :
-     setPassWord ("password")
-   }
+    showPassWord === "password" ? setPassWord("text") : setPassWord("password");
+  };
 
-  const signUp = (body, clear, history) => {
+  const getSignUp = (body, clear, history) => {
     setLoading(true);
     axios
       .post(`${BASE_URL}/signup`, body)
@@ -69,7 +68,7 @@ const SignUpForm = () => {
               name={"username"}
               value={form.username}
               onChange={onChange}
-              label={"Username"}
+              label={"Nome de Usuário"}
               variant={"outlined"}
               fullWidth
               margin={"normal"}
@@ -87,12 +86,14 @@ const SignUpForm = () => {
               required
               type={"email"}
             />
-              <StyledButtonBase  onClick={showPassWordInput} >Mostrar senha</StyledButtonBase>
+            <StyledButtonBase onClick={showPassWordInput}>
+              Mostrar senha
+            </StyledButtonBase>
             <TextField
               name={"password"}
               value={form.password}
               onChange={onChange}
-              label={"Password"}
+              label={"Senha"}
               variant={"outlined"}
               fullWidth
               margin={"normal"}
@@ -106,7 +107,7 @@ const SignUpForm = () => {
             variant={"contained"}
             color={"primary"}
           >
-            Sign Up
+            CADASTRAR
           </Button>
         </form>
       )}

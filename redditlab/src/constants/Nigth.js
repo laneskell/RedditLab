@@ -1,8 +1,14 @@
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
-import { neutralColorNigth, primaryColorNigth, contrastColorTextNigth, backgroundColorNigth, backgroundColorCardNigth, secundaryColorTextNigth} from "./colors";
+import {
+  neutralColorNigth,
+  primaryColorNigth,
+  contrastColorTextNigth,
+  backgroundColorNigth,
+  backgroundColorCardNigth,
+  secundaryColorTextNigth,
+} from "./colors";
 
 const theme2 = createMuiTheme({
-  
   palette: {
     primary: {
       main: primaryColorNigth,
@@ -17,9 +23,8 @@ const theme2 = createMuiTheme({
       secondary: secundaryColorTextNigth,
     },
     action: {
-        disabled: "white",
-     
-      },
+      disabled: "white",
+    },
   },
 });
 

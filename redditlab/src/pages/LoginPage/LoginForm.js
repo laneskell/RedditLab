@@ -1,5 +1,9 @@
 import React, { useContext, useState } from "react";
-import { InputsContainer, LoginFormContainer, StyledButtonBase } from "./styled";
+import {
+  InputsContainer,
+  LoginFormContainer,
+  StyledButtonBase,
+} from "./styled";
 import TextField from "@material-ui/core/TextField";
 import useForm from "../../hooks/useForm";
 import Button from "@material-ui/core/Button";
@@ -8,37 +12,32 @@ import axios from "axios";
 import BASE_URL from "../../constants/urls";
 import { goToFeed } from "../../routes/coordinator";
 import GlobalStateContext from "../../global/GlobalStateContext";
-import Loader from "../../components/Loader"
-import { ButtonBase } from "@material-ui/core";
-import { AddAlarmOutlined } from "@material-ui/icons";
+import Loader from "../../components/Loader";
 
 const LoginForm = () => {
+  const history = useHistory();
   const [form, onChange, clear] = useForm({ email: "", password: "" });
-  const [showPassWord, setPassWord] = useState("password")
+  const [showPassWord, setPassWord] = useState("password");
   const {
     setOpenAlert,
     setAlertMsg,
     setAlertSeverity,
     setRightButtonText,
     loading,
-    setLoading
+    setLoading,
   } = useContext(GlobalStateContext);
-
-  const history = useHistory();
-  setLoading(false);
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    login(form, clear, history);
-    setLoading(true)
+    getLogin(form, clear, history);
+    setLoading(true);
   };
 
   const showPassWordInput = () => {
-   showPassWord === "password" ? setPassWord ("text") :
-    setPassWord ("password")
-  }
+    showPassWord === "password" ? setPassWord("text") : setPassWord("password");
+  };
 
-  const login = (body, clear, history) => {
+  const getLogin = (body, clear, history) => {
     axios
       .post(`${BASE_URL}/login`, body)
       .then((res) => {
@@ -48,7 +47,6 @@ const LoginForm = () => {
         clear();
         goToFeed(history);
         setRightButtonText("Logout");
-       
       })
       .catch((err) => {
         setLoading(false);
@@ -60,46 +58,48 @@ const LoginForm = () => {
 
   return (
     <LoginFormContainer>
-    
-    {loading ? (
+      {loading ? (
         <Loader />
-      ) : (  <form onSubmit={onSubmitForm}>
-        <InputsContainer>
-          <TextField
-            name={"email"}
-            value={form.email}
-            onChange={onChange}
-            label={"E-mail"}
-            variant={"outlined"}
-            fullWidth
-            margin={"normal"}
-            required
-            type={"email"}
-          />
-          <StyledButtonBase  onClick={showPassWordInput} >Mostrar senha</StyledButtonBase>
-          <TextField
-            name={"password"}
-            value={form.password}
-            onChange={onChange}
-            label={"Password"}
-            variant={"outlined"}
-            fullWidth
-            margin={"normal"}
-            required
-            type= {showPassWord}
-            
-          />
-        </InputsContainer>
+      ) : (
+        <form onSubmit={onSubmitForm}>
+          <InputsContainer>
+            <TextField
+              name={"email"}
+              value={form.email}
+              onChange={onChange}
+              label={"E-mail"}
+              variant={"outlined"}
+              fullWidth
+              margin={"normal"}
+              required
+              type={"email"}
+            />
+            <StyledButtonBase onClick={showPassWordInput}>
+              Mostrar senha
+            </StyledButtonBase>
+            <TextField
+              name={"password"}
+              value={form.password}
+              onChange={onChange}
+              label={"Senha"}
+              variant={"outlined"}
+              fullWidth
+              margin={"normal"}
+              required
+              type={showPassWord}
+            />
+          </InputsContainer>
 
-        <Button
-          type={"submit"}
-          fullWidth
-          variant={"contained"}
-          color={"primary"}
-        >
-          Login
-        </Button>
-      </form>)}
+          <Button
+            type={"submit"}
+            fullWidth
+            variant={"contained"}
+            color={"primary"}
+          >
+            ENTRAR
+          </Button>
+        </form>
+      )}
     </LoginFormContainer>
   );
 };

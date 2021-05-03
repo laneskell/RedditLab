@@ -21,7 +21,7 @@ const SignUpPage = () => {
         color={"primary"}
         onClick={() => goToPreviousPage(history)}
       >
-        Back
+        Voltar
       </Button>
       <AlertModified />
     </ScreenContainer>

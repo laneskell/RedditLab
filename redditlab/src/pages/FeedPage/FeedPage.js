@@ -3,10 +3,8 @@ import {
   ScreenContainer,
   PostsContainer,
   AddPostButton,
-  InputDiv,
   TopContainerPosts,
   ContainerFeed,
-  ContainerSeach,
 } from "./styled";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import PostCard from "../../components/PostCard/PostCard";
@@ -17,14 +15,13 @@ import Loader from "../../components/Loader";
 import Pagination from "../../components/Pagination";
 import { goToCreatePostPage, goToPostPage } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
-import { Add, BusinessTwoTone } from "@material-ui/icons";
+import { Add,} from "@material-ui/icons";
 import AlertModified from "../../components/Alert";
 import useInput from "../../hooks/useInput";
 import TextField from "@material-ui/core/TextField";
 import TopPosts from "./mostCommentedPosts";
 import TopComments from "./topcomments";
-import { Button, ButtonBase, Container, CssBaseline } from "@material-ui/core";
-import { blue, green, red, yellow } from "@material-ui/core/colors";
+import {Container, CssBaseline } from "@material-ui/core";
 import VerticalTabs from "./verticalTabs";
 
 const FeedPage = () => {
@@ -44,7 +41,6 @@ const FeedPage = () => {
   const history = useHistory();
 
   const [search, setSearch] = useInput("");
-  
 
   const onClickCard = (id) => {
     goToPostPage(history, id);
@@ -149,15 +145,15 @@ const FeedPage = () => {
   const sortPosts = posts.sort((a, b) => {
     return b.createdAt - a.createdAt;
   });
-
+  console.log("chega o search", search);
   const filteredPosts = sortPosts.filter((post) => {
     const titlePost = post.title.toLowerCase();
     const textPost = post.text.toLowerCase();
     const userPost = post.username.toLowerCase();
     if (
-      titlePost.includes(search.toLowerCase()) ||
-      textPost.includes(search.toLowerCase()) ||
-      userPost.includes(search.toLowerCase())
+      (titlePost && titlePost.includes(search.toLowerCase())) ||
+      (textPost && textPost.includes(search.toLowerCase())) ||
+      (userPost && userPost.includes(search.toLowerCase()))
     ) {
       return true;
     } else {
@@ -198,7 +194,7 @@ const FeedPage = () => {
       <CssBaseline />
       <ContainerFeed>
         <div>
-          <VerticalTabs />
+          <VerticalTabs search={search} setSearch={setSearch} />
         </div>
         <ScreenContainer>
           <>
@@ -218,7 +214,6 @@ const FeedPage = () => {
             </AddPostButton>
           </>
         </ScreenContainer>
-
         <TopContainerPosts>
           <TopPosts />
           <TopComments />

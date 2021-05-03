@@ -8,7 +8,7 @@ const GlobalState = (props) => {
   const [alertSeverity, setAlertSeverity] = useState("");
   const token = localStorage.getItem("token");
   const [rightButtonText, setRightButtonText] = useState("");
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
@@ -16,23 +16,14 @@ const GlobalState = (props) => {
   const [containerSearch, setContainerSearch] = React.useState(true);
 
   React.useEffect(() => {
-  
     if (window.matchMedia("(min-width:800px)").matches) {
-      setContainerSearch(true)
-      setPostsPerPage(5)
-     
-     
+      setContainerSearch(true);
+      setPostsPerPage(5);
     } else {
-      setContainerSearch(false)
-      setPostsPerPage(2)
+      setContainerSearch(false);
+      setPostsPerPage(2);
     }
-
-  
-  
-}, []);
-
-
-
+  }, []);
 
   return (
     <GlobalStateContext.Provider

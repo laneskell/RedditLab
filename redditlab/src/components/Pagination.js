@@ -29,7 +29,7 @@ export default function BasicPagination(totalPosts, props) {
         count={pageNumbers}
         page={currentPage}
         onChange={handleChange}
-        color="primary"
+        color='primary'
       />
     </div>
   );

@@ -24,10 +24,9 @@ const PostPage = () => {
   useProtectedPage();
   const params = useParams();
   const history = useHistory();
-
   const [postDetails, setPostDetails] = useState({});
   const [postComments, setPostComments] = useState([]);
-
+  const [form, onChange, clear] = useForm({ text: "" });
   const {
     loading,
     setLoading,
@@ -38,10 +37,6 @@ const PostPage = () => {
     setAlertSeverity,
     setCurrentPage,
   } = useContext(GlobalStateContext);
-
-  const [form, onChange, clear] = useForm({
-    text: "",
-  });
 
   const onSubmitForm = (event) => {
     event.preventDefault();
@@ -90,15 +85,6 @@ const PostPage = () => {
     setCurrentPage(1);
     getPostDetails();
   }, []);
-
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-
-  const sortComments = postComments.sort((a, b) => {
-    return b.createdAt - a.createdAt;
-  });
-
-  const currentComments = sortComments.slice(indexOfFirstPost, indexOfLastPost);
 
   const upvoteComment = (comment) => {
     if (comment.userVoteDirection > 0) {
@@ -250,12 +236,20 @@ const PostPage = () => {
       });
   };
 
+  // order list comments
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const sortComments = postComments.sort((a, b) => {
+    return b.createdAt - a.createdAt;
+  });
+  const currentComments = sortComments.slice(indexOfFirstPost, indexOfLastPost);
+
   const commentsCards = currentComments.map((comment) => {
     var date = new Date(comment.createdAt);
     return (
       <CommentCard
         key={comment.id}
-        text={comment.text.toString() }
+        text={comment.text.toString()}
         votesCount={comment.votesCount}
         username={comment.username}
         createdAt={date.toLocaleDateString()}
@@ -272,7 +266,6 @@ const PostPage = () => {
   var corlorRandom = () => {
     return "#" + Math.floor(Math.random() * 16777215).toString(16);
   };
- 
 
   return (
     <ScreenContainer>
@@ -302,7 +295,7 @@ const PostPage = () => {
                   name={"text"}
                   value={form.text}
                   onChange={onChange}
-                  label={"New comment"}
+                  label={"Escreva um comentário"}
                   variant={"outlined"}
                   fullWidth
                   margin={"normal"}
@@ -315,7 +308,7 @@ const PostPage = () => {
                 variant={"contained"}
                 color={"primary"}
               >
-                Comment
+                Comentar
               </Button>
             </form>
           </CommentContainer>

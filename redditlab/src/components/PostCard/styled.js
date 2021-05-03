@@ -3,7 +3,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Avatar, CardActions } from "@material-ui/core";
 
-
 export const PostCardContainer = styled(Card)`
   width: 40vw;
   margin: 5%;
@@ -15,7 +14,6 @@ export const PostCardContainer = styled(Card)`
     width: 90vw;
   }
 `;
-
 export const PostCardContent = styled(CardContent)`
   display: flex;
   min-height: 10vh;
@@ -29,7 +27,6 @@ export const LeftContent = styled.div`
   margin-top: 4px;
 `;
 export const RightContent = styled.div``;
-
 
 export const StyledCard = styled(Card)`
   margin: 1vh;
@@ -52,14 +49,14 @@ export const TextCardComments = styled.div`
 `;
 
 export const CounterCommentsStyle = styled.p`
-  font-size:12px;
-  display:inline;
-  width:80%;
-  height:50%;
+  font-size: 12px;
+  display: inline;
+  width: 80%;
+  height: 50%;
 `;
 export const IconVotesCounter = styled.div`
-  display:flex;
-  flex-direction:column;
-  text-align:center;
-  height:8vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 8vh;
 `;

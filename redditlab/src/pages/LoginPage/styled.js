@@ -39,10 +39,8 @@ export const LogoImage = styled.img`
   transform: translateZ(0);
 `;
 
-
 export const StyledButtonBase = styled(ButtonBase)`
- align-self:flex-end;
- position:relative;
- bottom:-15px;
-
+  align-self: flex-end;
+  position: relative;
+  bottom: -15px;
 `;

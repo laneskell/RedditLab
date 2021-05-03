@@ -1,13 +1,7 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import { ContainerSeach, InputDiv } from "./styled";
+import { ContainerSeach, StyledSelectFilter } from "./styled";
 import { IconButton, TextField } from "@material-ui/core";
-import useInput from "../../hooks/useInput";
 import CloseIcon from "@material-ui/icons/Close";
 import GlobalStateContext from "../../global/GlobalStateContext";
 
@@ -20,19 +14,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VerticalTabs() {
+export default function VerticalTabs(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const {
-    search,
-    setSearch,
-    containerSearch,
-    setContainerSearch,
-  } = React.useContext(GlobalStateContext);
-  
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+
+  const { containerSearch, setContainerSearch } = React.useContext(
+    GlobalStateContext
+  );
 
   const toggleStateContainerSearch = () => {
     containerSearch ? setContainerSearch(false) : setContainerSearch(true);
@@ -41,44 +28,41 @@ export default function VerticalTabs() {
     <>
       {containerSearch && (
         <ContainerSeach className={classes.root}>
-          <Tabs
-            orientation='vertical'
-            variant='scrollable'
-            value={value}
-            onChange={handleChange}
-            aria-label='Vertical tabs example'
-            className={classes.tabs}
-            textColor='secondary'
-          >
-            {" "}
- 
-            <IconButton  color='secondary' onClick={toggleStateContainerSearch}>
+          <div>
+            <IconButton color='secondary' onClick={toggleStateContainerSearch}>
               <CloseIcon />
             </IconButton>
+          </div>
 
-            <TextField
+          <TextField
+            name={"search"}
+            value={props.search}
+            onChange={props.setSearch}
+            variant={"outlined"}
+            label={"Pesquisar"}
+            fullWidth
+            autoFocus
+            margin={"normal"}
+          />
+          <div>
+            <StyledSelectFilter
+              multiple
+              native
               name={"search"}
-              value={search}
-              onChange={setSearch}
-              variant={"outlined"}
-              label={"PESQUISAR"}
-              fullWidth
-              autoFocus
-              margin={"normal"}
-            />
-            <Tab label='limpar filtros' />
-            <Tab label='+ Recentes' />
-            <Tab label='+ antigos' />
-            <Tab label='+ curtidos' />
-            <Tab label='+ Comentados' />
-            <Tab label='tecnologia' />
-            <Tab label='música' />
-            <Tab label='livros' />
-            <Tab label='assunto' />
-            <Tab label='assunto' />
-            <Tab label='assunto' />
-            <Tab label='assunto' />
-          </Tabs>
+              value={props.search}
+              onChange={props.setSearch}
+            >
+              <option value=''>EXIBIR TODOS</option>
+
+              <option value='livro'> + SOBRE LIVROS</option>
+
+              <option value='tec'>+ SOBRE TECNOLOGIA</option>
+
+              <option value='Covid'> + SOBRE COVID</option>
+
+              <option value='música'>+ SOBRE MÚSICAS</option>
+            </StyledSelectFilter>
+          </div>
         </ContainerSeach>
       )}
     </>
