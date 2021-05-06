@@ -1,17 +1,17 @@
+
 import { useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { goToFeed } from "../routes/coordinator";
 
-const useUnprotectedPage = () => {
+export const useProtectedLog = () => {
   const history = useHistory();
 
   useLayoutEffect(() => {
     const token = window.localStorage.getItem("token");
 
-    if (token) {
-      goToFeed(history);
+    if (!token) {
+      history.push("/login");
+    } else {
+      history.push("/");
     }
   }, [history]);
 };
-
-export default useUnprotectedPage;

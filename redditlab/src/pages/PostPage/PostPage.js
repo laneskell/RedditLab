@@ -5,7 +5,7 @@ import {
   InputsContainer,
   CommentContainer,
 } from "./styled";
-import useProtectedPage from "../../hooks/useProtectedPage";
+
 import { useParams } from "react-router-dom";
 import BASE_URL from "../../constants/urls";
 import axios from "axios";
@@ -19,9 +19,10 @@ import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 import AlertModified from "../../components/Alert";
 import PostCard from "../../components/PostCard/PostCard";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const PostPage = () => {
-  useProtectedPage();
+useProtectedPage()
   const params = useParams();
   const history = useHistory();
   const [postDetails, setPostDetails] = useState({});
@@ -44,6 +45,7 @@ const PostPage = () => {
   };
 
   const getPostDetails = () => {
+
     axios
       .get(`${BASE_URL}/posts/${params.id}`, {
         headers: {
@@ -56,8 +58,7 @@ const PostPage = () => {
         setLoading(false);
       })
       .catch((err) => {
-        alert(err.message);
-        alert("Error getting post details!");
+       
       });
   };
 

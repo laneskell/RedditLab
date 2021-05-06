@@ -1,11 +1,12 @@
 import React from "react";
-import useProtectedPage from "../../hooks/useProtectedPage";
+
 import { PostContainer, ScreenContainer } from "./styled";
 import CreatePostForm from "./CreatePostForm";
 import Typography from "@material-ui/core/Typography";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 const CreatePostPage = () => {
-  useProtectedPage();
+useProtectedPage();
   return (
     <ScreenContainer>
       <PostContainer>

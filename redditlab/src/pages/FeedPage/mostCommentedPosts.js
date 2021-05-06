@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import useProtectedPage from "../../hooks/useProtectedPage";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import { goToPostPage } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
@@ -11,7 +10,7 @@ import Carousel from "react-elastic-carousel";
 import { StyledCarousel } from "./styled";
 
 const TopPosts = () => {
-  useProtectedPage();
+
   const {
     posts,
     currentPage,
@@ -19,7 +18,7 @@ const TopPosts = () => {
   } = useContext(GlobalStateContext);
   const history = useHistory();
 
-  const [search, setSearch] = useInput("");
+  const [search] = useInput("");
 
   const onClickCard = (id) => {
     goToPostPage(history, id);

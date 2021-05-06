@@ -6,7 +6,6 @@ import {
   TopContainerPosts,
   ContainerFeed,
 } from "./styled";
-import useProtectedPage from "../../hooks/useProtectedPage";
 import PostCard from "../../components/PostCard/PostCard";
 import BASE_URL from "../../constants/urls";
 import GlobalStateContext from "../../global/GlobalStateContext";
@@ -22,9 +21,12 @@ import TopPosts from "./mostCommentedPosts";
 import TopComments from "./topcomments";
 import {Container, CssBaseline } from "@material-ui/core";
 import VerticalTabs from "./verticalTabs";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
+
+
 
 const FeedPage = () => {
-  useProtectedPage();
+useProtectedPage()
   const {
     loading,
     setLoading,
@@ -46,6 +48,7 @@ const FeedPage = () => {
   };
 
   const getPosts = () => {
+   
     axios
       .get(`${BASE_URL}/posts`, {
         headers: {
@@ -57,7 +60,7 @@ const FeedPage = () => {
         setLoading(false);
       })
       .catch((err) => {
-        alert(err.message);
+        
       });
   };
 
@@ -81,7 +84,7 @@ const FeedPage = () => {
           getPosts();
         })
         .catch((err) => {
-          alert(err.message);
+          
         });
     }
   };

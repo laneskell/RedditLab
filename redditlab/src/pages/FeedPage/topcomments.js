@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import useProtectedPage from "../../hooks/useProtectedPage";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import { goToPostPage } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
@@ -11,11 +10,11 @@ import { StyledCarousel } from "./styled";
 import AddCommentIcon from "@material-ui/icons/AddComment";
 
 const TopComments = () => {
-  useProtectedPage();
+
   const { posts, currentPage, postsPerPage } = useContext(GlobalStateContext);
   const history = useHistory();
 
-  const [search, setSearch] = useInput("");
+  const [search] = useInput("");
 
   const onClickCard = (id) => {
     goToPostPage(history, id);

@@ -2,14 +2,14 @@ import React from "react";
 import { ScreenContainer, LogoImage } from "./styled";
 import logo from "../../assets/images/logo.png";
 import SignUpForm from "./SignUpForm";
-import useUnprotectedPage from "../../hooks/useUnprotectedPage";
+import { useProtectedLog } from "../../hooks/useUnprotectedPage";
 import AlertModified from "../../components/Alert";
 import { goToPreviousPage } from "../../routes/coordinator";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 
 const SignUpPage = () => {
-  useUnprotectedPage();
+  useProtectedLog()
   const history = useHistory();
   return (
     <ScreenContainer>
