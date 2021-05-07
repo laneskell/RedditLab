@@ -20,7 +20,7 @@ const Router = (props) => {
       <Header
         checked={checked}
         toggleChecked={toggleChecked}
-        toggleCheckedLigth={toggleCheckedLigth}
+        toggleCheckedLight={toggleCheckedLigth}
       />
       <Switch>
         <Route exact path='/login'>

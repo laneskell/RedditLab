@@ -22,6 +22,7 @@ import TopComments from "./topcomments";
 import {Container, CssBaseline } from "@material-ui/core";
 import VerticalTabs from "./verticalTabs";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
+import CreatePostPage from "../CreatePostPage/CreatePostPage";
 
 
 
@@ -38,6 +39,8 @@ useProtectedPage()
     setAlertMsg,
     setAlertSeverity,
     setOpenAlert,
+    createPost,
+    setCreatePost,
   } = useContext(GlobalStateContext);
   const history = useHistory();
 
@@ -139,7 +142,7 @@ useProtectedPage()
     getPosts();
     setLoading(true);
     setCurrentPage(1);
-  }, []);
+  }, [createPost]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -191,9 +194,15 @@ useProtectedPage()
     );
   });
 
+
+  const showPage = () => {
+    return createPost ? <CreatePostPage/> :  null;
+  }
+
   return (
     <Container maxWidth='gl'>
       <CssBaseline />
+      {showPage()}
       <ContainerFeed>
         <div>
           <VerticalTabs search={search} setSearch={setSearch} />
@@ -210,7 +219,7 @@ useProtectedPage()
             <AlertModified />
             <AddPostButton
               color={"primary"}
-              onClick={() => goToCreatePostPage(history)}
+              onClick={() => setCreatePost(true)}
             >
               <Add />
             </AddPostButton>

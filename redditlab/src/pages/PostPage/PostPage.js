@@ -294,6 +294,7 @@ useProtectedPage()
               <InputsContainer>
                 <TextField
                   name={"text"}
+                  aria-label="text for comments"
                   value={form.text}
                   onChange={onChange}
                   label={"Escreva um comentário"}

@@ -10,6 +10,7 @@ export const ScreenContainer = styled.div`
   margin-top: 5vh;
   margin-bottom: 2vh;
   overflow: auto;
+  
 `;
 
 export const PostsContainer = styled.div`

@@ -20,7 +20,7 @@ const Header = (props) => {
     setContainerSearch,
   } = useContext(GlobalStateContext);
   const toggleChecked = props.toggleChecked;
-  const toggleCheckedLigth = props.toggleCheckedLigth;
+  const toggleCheckedLight = props.toggleCheckedLight;
   const checked = props.checked;
 
   const logout = () => {
@@ -63,7 +63,7 @@ const Header = (props) => {
       <StyledToolbar>
         <div>
           <Button onClick={() => goToFeed(history)} color='inherit'>
-            LabEddit
+            <h3>LabEddit</h3>
           </Button>
           {!containerSearch && (
             <IconButton color='inherit' onClick={toggleStateContainerSearch}>
@@ -72,9 +72,12 @@ const Header = (props) => {
           )}
         </div>
         <SwitchesSize
+        type="checkbox"
+        value="mode Dark"
+        aria-label="togle mode dark and light"
           checked={checked}
           toggleChecked={toggleChecked}
-          toggleCheckedLigth={toggleCheckedLigth}
+          toggleCheckedLight={toggleCheckedLight}
         />
         <div>
           <ContainerLogout onClick={handleClick}>

@@ -2,18 +2,17 @@ import React from "react";
 import { ScreenContainer, LogoImage } from "./styled";
 import logo from "../../assets/images/logo.png";
 import SignUpForm from "./SignUpForm";
-import { useProtectedLog } from "../../hooks/useUnprotectedPage";
 import AlertModified from "../../components/Alert";
 import { goToPreviousPage } from "../../routes/coordinator";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 
 const SignUpPage = () => {
-  useProtectedLog()
+
   const history = useHistory();
   return (
     <ScreenContainer>
-      <LogoImage src={logo} />
+      <LogoImage src={logo} alt="logo labReddit, é um robô fofinho em dois tons de  azul, com texto Labeddit" />
       <SignUpForm />
       <Button
         type={"submit"}
@@ -21,7 +20,7 @@ const SignUpPage = () => {
         color={"primary"}
         onClick={() => goToPreviousPage(history)}
       >
-        Voltar
+        <h3>Voltar</h3>
       </Button>
       <AlertModified />
     </ScreenContainer>

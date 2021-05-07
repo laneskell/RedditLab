@@ -10,6 +10,8 @@ import { goToFeed } from "../../routes/coordinator";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import Loader from "../../components/Loader";
 import { StyledButtonBase } from "../LoginPage/styled";
+import { IconButton, InputAdornment } from "@material-ui/core";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 
 const SignUpForm = () => {
   const history = useHistory();
@@ -34,8 +36,12 @@ const SignUpForm = () => {
     setLoading(true);
   };
   setLoading(false)
-  const showPassWordInput = () => {
-    showPassWord === "password" ? setPassWord("text") : setPassWord("password");
+
+  const handleClickShowPassword = () => {
+    setPassWord(!showPassWord);
+  };
+  const handleMouseDownPassword = () => {
+    setPassWord(!showPassWord);
   };
 
   const getSignUp = (body, clear, history) => {
@@ -66,6 +72,7 @@ const SignUpForm = () => {
           <InputsContainer>
             <TextField
               name={"username"}
+              aria-label="username"
               value={form.username}
               onChange={onChange}
               label={"Nome de Usuário"}
@@ -79,6 +86,7 @@ const SignUpForm = () => {
               name={"email"}
               value={form.email}
               onChange={onChange}
+              aria-label="email"
               label={"E-mail"}
               variant={"outlined"}
               fullWidth
@@ -86,19 +94,31 @@ const SignUpForm = () => {
               required
               type={"email"}
             />
-            <StyledButtonBase onClick={showPassWordInput}>
-              Mostrar senha
-            </StyledButtonBase>
+        
             <TextField
               name={"password"}
               value={form.password}
               onChange={onChange}
+              aria-label="password"
               label={"Senha"}
               variant={"outlined"}
               fullWidth
               margin={"normal"}
               required
-              type={showPassWord}
+              type={showPassWord ? "text" : "password"}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPassWord ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </InputsContainer>
           <Button

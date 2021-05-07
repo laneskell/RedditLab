@@ -14,6 +14,7 @@ const GlobalState = (props) => {
   const [postsPerPage, setPostsPerPage] = useState(5);
   const [search, setSearch] = useInput("");
   const [containerSearch, setContainerSearch] = React.useState(true);
+  const [createPost, setCreatePost] = useState(false);
 
   React.useEffect(() => {
     if (window.matchMedia("(min-width:800px)").matches) {
@@ -49,6 +50,8 @@ const GlobalState = (props) => {
         setSearch,
         containerSearch,
         setContainerSearch,
+        createPost,
+        setCreatePost,
       }}
     >
       {props.children}

@@ -13,11 +13,13 @@ import BASE_URL from "../../constants/urls";
 import { goToFeed } from "../../routes/coordinator";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import Loader from "../../components/Loader";
+import { IconButton, InputAdornment } from "@material-ui/core";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 
 const LoginForm = () => {
   const history = useHistory();
   const [form, onChange, clear] = useForm({ email: "", password: "" });
-  const [showPassWord, setPassWord] = useState("password");
+  const [showPassWord, setPassWord] = useState(true);
   const {
     setOpenAlert,
     setAlertMsg,
@@ -33,8 +35,11 @@ const LoginForm = () => {
     setLoading(true);
   };
 
-  const showPassWordInput = () => {
-    showPassWord === "password" ? setPassWord("text") : setPassWord("password");
+  const handleClickShowPassword = () => {
+    setPassWord(!showPassWord);
+  };
+  const handleMouseDownPassword = () => {
+    setPassWord(!showPassWord);
   };
 
   const getLogin = (body, clear, history) => {
@@ -65,6 +70,7 @@ const LoginForm = () => {
           <InputsContainer>
             <TextField
               name={"email"}
+              aria-label="email"
               value={form.email}
               onChange={onChange}
               label={"E-mail"}
@@ -74,11 +80,10 @@ const LoginForm = () => {
               required
               type={"email"}
             />
-            <StyledButtonBase onClick={showPassWordInput}>
-              Mostrar senha
-            </StyledButtonBase>
+   
             <TextField
               name={"password"}
+              aria-label="password"
               value={form.password}
               onChange={onChange}
               label={"Senha"}
@@ -86,7 +91,20 @@ const LoginForm = () => {
               fullWidth
               margin={"normal"}
               required
-              type={showPassWord}
+              type={showPassWord ? "text" : "password"}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPassWord ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </InputsContainer>
 
@@ -96,7 +114,7 @@ const LoginForm = () => {
             variant={"contained"}
             color={"primary"}
           >
-            ENTRAR
+            <h3>ENTRAR</h3>
           </Button>
         </form>
       )}

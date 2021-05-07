@@ -5,6 +5,7 @@ export const ScreenContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw;
+
 `;
 
 export const InputsContainer = styled.div`
@@ -29,5 +30,5 @@ export const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10vh;
+  margin-top: 1vh;
 `;

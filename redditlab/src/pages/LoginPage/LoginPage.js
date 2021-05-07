@@ -3,29 +3,28 @@ import { ScreenContainer, SignUpButtonContainer, LogoImage } from "./styled";
 import logo from "../../assets/images/logo.png";
 import Button from "@material-ui/core/Button";
 import LoginForm from "./LoginForm";
-import { goToSignUp } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
-
 import AlertModified from "../../components/Alert";
+import { goToSignUp } from "../../routes/coordinator";
 import { useProtectedLog } from "../../hooks/useUnprotectedPage";
 
-const LoginPage = () => {
-useProtectedLog()
-  const history = useHistory();
 
+const LoginPage = () => {
+  const history = useHistory();
+  useProtectedLog()
   return (
     <ScreenContainer>
-      <LogoImage src={logo} />
+      <LogoImage src={logo} alt="logo labReddit, é um robô fofinho em dois tons de  azul, com texto Labeddit"  />
       <LoginForm />
       <SignUpButtonContainer>
         <Button
+         onClick={() => goToSignUp(history)}
           type={"submit"}
           fullWidth
           variant={"text"}
           color={"primary"}
-          onClick={() => goToSignUp(history)}
-        >
-          INSCREVA-SE
+         >
+          <h3>INSCREVA-SE</h3>
         </Button>
       </SignUpButtonContainer>
       <AlertModified />

@@ -9,6 +9,7 @@ import axios from "axios";
 import Loader from "../../components/Loader";
 import { useHistory } from "react-router-dom";
 import AlertModified from "../../components/Alert";
+import Carousel from "react-elastic-carousel";
 
 const AddRecipeForm = () => {
   const [form, onChange, clear] = useForm({ text: "", title: "" });
@@ -18,6 +19,8 @@ const AddRecipeForm = () => {
     setAlertMsg,
     setAlertSeverity,
     setOpenAlert,
+    createPost,
+    setCreatePost,
   } = useContext(GlobalStateContext);
 
   const history = useHistory();
@@ -41,6 +44,7 @@ const AddRecipeForm = () => {
         setAlertMsg("Post created successfully");
         setAlertSeverity("success");
         setOpenAlert(true);
+        setCreatePost(false)
       })
       .catch((err) => {
         setAlertMsg(err.response.data.message);
@@ -50,16 +54,20 @@ const AddRecipeForm = () => {
       });
   };
 
+
   return (
     <div>
       {loading ? (
-        <Loader />
+       
+        <div>Carregando ...</div>
       ) : (
         <form onSubmit={onSubmitForm}>
           <AddPostFormContainer>
+            <h3>O que você quer compartihar hoje?</h3>
             <InputsContainer>
               <TextField
                 name={"title"}
+                aria-label="title for post"
                 value={form.title}
                 onChange={onChange}
                 label={"Title"}
@@ -71,6 +79,7 @@ const AddRecipeForm = () => {
               />
               <TextField
                 name={"text"}
+                aria-label="text for post"
                 value={form.text}
                 onChange={onChange}
                 label={"Text"}
@@ -86,7 +95,7 @@ const AddRecipeForm = () => {
               type={"submit"}
               fullWidth
             >
-              <>Add Post</>
+              <>Postar</>
             </Button>
           </AddPostFormContainer>
         </form>
