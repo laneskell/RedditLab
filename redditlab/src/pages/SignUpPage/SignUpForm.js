@@ -105,7 +105,7 @@ const SignUpForm = () => {
               fullWidth
               margin={"normal"}
               required
-              type={showPassWord ? "text" : "password"}
+              type={!showPassWord ? "text" : "password"}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
