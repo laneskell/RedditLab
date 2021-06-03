@@ -4,7 +4,7 @@
 
 Aplicação web - Rede social inspirada no Reddit. Projeto em ReactJs, Consumindo API cedida pela Labenu.
 
-### Deploy Surge (Veja na web)
+### Deploy Surge (Veja na web).
 
 http://lanesk-redditlab.surge.sh/
 
