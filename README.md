@@ -8,8 +8,8 @@ Aplicação web - Rede social inspirada no Reddit. Projeto em ReactJs, Consumind
 
 http://lanesk-redditlab.surge.sh/
 
-Faça cadastro ou entre logada com :
-e-mail: visitante@lanes.com
+Faça cadastro ou entre logada com:
+email: visitante@lanes.com
 senha: 123456
 
 ## 📦 Desenvolvimento
@@ -33,7 +33,6 @@ Conhecimentos necessaŕios:
 * CSS3
 
 ### Link da API:
-
 https://documenter.getpostman.com/view/7549981/TzRLkAfr
 
 ### Prints art
