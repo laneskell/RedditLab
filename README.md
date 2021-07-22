@@ -17,6 +17,7 @@ Features : É possivel criar usuário, logar,navegar pelos posts e cometários, 
 Assim como Reddit, só é possivel dar 1 voto, para masis ou para menos.
 Ainda conta com mudandça de tema para modo Dark.
 Responsividade Tablet/Celular
+___
 
 
 ## 🛠️ Construído com
