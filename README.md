@@ -1,23 +1,22 @@
 
 
-# RedditLab
+Web application - Social network inspired by Reddit. Project in ReactJs, Consuming API provided by Labenu.
 
-Aplicação web - Rede social inspirada no Reddit. Projeto em ReactJs, Consumindo API cedida pela Labenu.
-
-### Deploy - Surge (Veja na web).
-
+Deploy - Surge (See on the web).
 http://lanesk-redditlab.surge.sh/
 
-Faça cadastro ou entre logada com:
-email: visitante@lanes.com
-senha: 123456
+Register or sign logged Make: email: visitante@lanes.com Password: 123456
 
+📦 Development
+Features : It is possible to create a user, log in, browse the posts and comments, view by categories and search in filters. You can also post content, comment on content, vote positively or negatively and each post and comments. Just like Reddit, you can only give 1 vote, for more or less. It also has a change of theme to Dark mode. Tablet/Cellular Responsiveness
+
+____
 ## 📦 Desenvolvimento
 Features : É possivel criar usuário, logar,navegar pelos posts e cometários, ver por categorias e pesquisar nos filtros. Também pode postar um conteúdo, comentar conteúdos, votar posittivamente ou negativamente e casa post e comentários. 
 Assim como Reddit, só é possivel dar 1 voto, para masis ou para menos.
 Ainda conta com mudandça de tema para modo Dark.
 Responsividade Tablet/Celular
-___
+____
 
 
 ## 🛠️ Construído com
